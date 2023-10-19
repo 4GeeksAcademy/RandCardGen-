@@ -4,30 +4,47 @@ import "./style.css";
 
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
-
 window.onload = () => {
   const card = document.querySelector(".card");
   const randomButton = document.querySelector("#random");
+  const applyDimensionsButton = document.querySelector("#applyDimensions");
+  const widthInput = document.querySelector("#widthInput");
+  const heightInput = document.querySelector("#heightInput");
 
   addNewCard(card);
 
   randomButton.addEventListener("click", () => {
     addNewCard(card);
   });
-};
 
-let addNewCard = card => {
+  applyDimensionsButton.addEventListener("click", () => {
+    const newWidth = widthInput.value + "px";
+    const newHeight = heightInput.value + "px";
+
+    card.style.width = newWidth;
+    card.style.height = newHeight;
+  });
+
+  setInterval(() => {
+    const newCard = document.querySelector(".card"); // Get a new card element
+    addNewCard(newCard);
+  }, 8000);
+};
+const addNewCard = card => {
   const suit = randomSuit();
-  card.classList.add(suit);
+  card.className = "card " + suit;
 
-  card.querySelector(".top").textContent = getSuitSymbol(suit);
-  card.querySelector(".bottom").textContent = getSuitSymbol(suit);
-  card.querySelector(".number").textContent = randomNumber();
-  document.querySelector("#random").addEventListener("click", function() {});
+  const topSpan = card.querySelector(".top");
+  const bottomSpan = card.querySelector(".bottom");
+  const numberSpan = card.querySelector(".number");
+
+  topSpan.textContent = getSuitSymbol(suit);
+  bottomSpan.textContent = getSuitSymbol(suit);
+  numberSpan.textContent = randomNumber();
 };
 
-let randomNumber = () => {
-  let numbers = [
+const randomNumber = () => {
+  const numbers = [
     "A",
     "2",
     "3",
@@ -42,19 +59,17 @@ let randomNumber = () => {
     "Q",
     "K"
   ];
-  let indexNumbers = Math.floor(Math.random() * numbers.length);
-
+  const indexNumbers = Math.floor(Math.random() * numbers.length);
   return numbers[indexNumbers];
 };
 
-let randomSuit = () => {
-  let suits = ["spade", "diamond", "heart", "club"];
-  let indexSuit = Math.floor(Math.random() * suits.length);
-
+const randomSuit = () => {
+  const suits = ["spade", "diamond", "heart", "club"];
+  const indexSuit = Math.floor(Math.random() * suits.length);
   return suits[indexSuit];
 };
 
-let getSuitSymbol = suit => {
+const getSuitSymbol = suit => {
   if (suit === "spade") {
     return "\u2660";
   } else if (suit === "diamond") {

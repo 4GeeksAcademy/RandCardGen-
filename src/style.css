@@ -1,3 +1,4 @@
+/* CSS code goes here */
 body {
   background: #0e7e12;
   box-sizing: border-box;
@@ -40,10 +41,7 @@ body {
 }
 
 .card.heart .top,
-.card.heart .bottom {
-  color: red;
-}
-
+.card.heart .bottom,
 .card.diamond .top,
 .card.diamond .bottom {
   color: red;
@@ -55,7 +53,6 @@ body {
 .card.club .bottom {
   color: black;
 }
-
 .button {
   text-align: center;
   display: block;
