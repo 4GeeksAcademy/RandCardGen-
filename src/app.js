@@ -4,16 +4,26 @@ import "./style.css";
 
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
-window.onload = () => {
-  const cards = document.querySelectorAll(".card");
 
-  cards.forEach(card => {
-    const suit = randomSuit();
-    card.classList.add(suit);
-    card.querySelector(".top").textContent = getSuitSymbol(suit);
-    card.querySelector(".bottom").textContent = getSuitSymbol(suit);
-    card.querySelector(".number").textContent = randomNumber();
+window.onload = () => {
+  const card = document.querySelector(".card");
+  const randomButton = document.querySelector("#random");
+
+  addNewCard(card);
+
+  randomButton.addEventListener("click", () => {
+    addNewCard(card);
   });
+};
+
+let addNewCard = card => {
+  const suit = randomSuit();
+  card.classList.add(suit);
+
+  card.querySelector(".top").textContent = getSuitSymbol(suit);
+  card.querySelector(".bottom").textContent = getSuitSymbol(suit);
+  card.querySelector(".number").textContent = randomNumber();
+  document.querySelector("#random").addEventListener("click", function() {});
 };
 
 let randomNumber = () => {

@@ -3,6 +3,10 @@ body {
   box-sizing: border-box;
 }
 
+.container {
+  position: relative;
+}
+
 .card {
   text-align: center;
   display: inline-block;
@@ -35,16 +39,6 @@ body {
   font-size: 80px;
 }
 
-.card.spade .top,
-.card.spade .bottom {
-  content: "\2660";
-}
-
-.card.club .top,
-.card.club .bottom {
-  content: "\2663";
-}
-
 .card.heart .top,
 .card.heart .bottom {
   color: red;
@@ -53,4 +47,23 @@ body {
 .card.diamond .top,
 .card.diamond .bottom {
   color: red;
+}
+
+.card.spade .top,
+.card.spade .bottom,
+.card.club .top,
+.card.club .bottom {
+  color: black;
+}
+
+.button {
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
